@@ -1,38 +1,221 @@
-.App {
-  text-align: center;
+
+
+header {
+  padding: 1px 20px;
+  background-color: rgb(13, 13, 134);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header img {
+  width: 60px;
+  height: 100%
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.movie-container h2 {
+  margin-left: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.movie-list {
+  display: flex;
+  overflow-x: auto;
+  /* white-space: nowrap; */
+  padding: 1rem;
+  gap: 1rem;
+  scroll-behavior: smooth;
+}
+
+.movie-card {
+  flex: 0 0 auto; /* Prevent shrinking, don't grow */
+  width: 150px;
+  height: 310px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: white;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+}
+
+.movie-card img {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.movie-card h4 {
+  font-size: 0.8em;
+  margin-bottom: 0;
+  margin-left: 2px;
+}
+
+.movie-card p {
+  font-size: 0.8em;
+  margin-left: 2px;
+}
+
+.score {
+  position: absolute;
+  bottom: -15px;
+  left: 8px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 2px solid green;
+  color: #fff;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  border-radius: 50px;
+}
+
+.movie-details {
+  position: relative;
+  /* height: 100vh; */
+  width: 100vw;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat
+}
+
+.movie-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7)
+}
+
+.movie-content {
+  position: relative;
+  color: white;
+  padding: 2rem;
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.poster-image {
+  width: 300px;
+  border-radius: 10px;
+  height: auto
+}
+
+.movie-text {
   display: flex;
   flex-direction: column;
+  align-items: flex-start
+}
+
+.genre-line {
+  display: flex;
   align-items: center;
+  gap: 1rem;
+}
+
+.genre-line ul {
+  display: flex;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.genre-line ul li {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 2px 6px;
+  border-radius: 4px;
+  /* font-size: 0.9rem; */
+}
+
+.score-line {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px
+}
+
+.score-details {
+  /* position: absolute; */
+  /* bottom: -15px; */
+  /* left: 8px; */
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 5px solid green;
+  color: #fff;
+  margin:  20px 1px;
+  width: 70px;
+  height: 70px;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  font-size: 1.5rem;
+  border-radius: 50px;
 }
 
-.App-link {
-  color: #61dafb;
+.score-line h2 {
+  width: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.tagline {
+  color: rgb(228, 227, 227);
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+.overview {
+  margin-bottom: 30px;
+}
+
+.crew-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 0;
+  margin: 0;
+}
+
+.crew-card {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.crew-card * {
+  margin: 0;
+  padding: 0;
+}
+
+.cast-list {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 1rem 0;
+  scroll-behavior: smooth;
+  white-space: nowrap
+}
+
+.actor-card {
+  flex: 0 0 auto;
+  width: 150px;
+  border-radius: 5px;
+  background-color: white;
+  text-align: center;
+  /* padding: 0.5rem; */
+  overflow: hidden; /* ✅ This clips image corners */
+}
+
+.actor-card * {
+  margin: 0;
+  padding: 0;
+}
+
+.actor-card .actor-image {
+  width: 100%;
 }
