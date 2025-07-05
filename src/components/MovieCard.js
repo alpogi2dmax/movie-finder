@@ -20,8 +20,20 @@ function MovieCard(props) {
                         src={`https://image.tmdb.org/t/p/w780${props.movie.poster_path}`} 
                         alt={props.movie.original_title}
                     />
-                    <div className='score'>
-                        {Math.round(props.movie.vote_average * 10)}%
+                    <div 
+                        className='score'
+                        style={{
+                            borderColor: 
+                                props.movie.vote_count === 0 ?
+                                'black' : 
+                                props.movie.vote_average > 7.5 ? 
+                                'green' : 
+                                props.movie.vote_average > 5 ?
+                                'orange' :
+                                'red'
+                        }}
+                    >
+                        {props.movie.vote_count > 0 && Math.round(props.movie.vote_average * 10)}
                     </div>
                 </div>
             </Link>

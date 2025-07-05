@@ -7,6 +7,7 @@ import Header from './components/Header';
 import MovieDetails from './components/MovieDetails';
 import Search from './components/Search';
 import SearchResults from './components/SearchResults'
+import Actor from './components/Actor';
 import tmdb from './api/tmdb';
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
           }
         />
         <Route path='movie/:id' element={<MovieDetails />} />
+        <Route path='actor/:id' element={<Actor />} />
         <Route 
           path='search/:query' 
           element={

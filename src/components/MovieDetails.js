@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import Cast from './Cast'
+import MovieInfo from './MovieInfo'
 import tmdb from '../api/tmdb'
 import poster_photo from './poster_photo.png'
 
@@ -32,9 +33,9 @@ function MovieDetails() {
 
     return (
         <>
-            <Link to={'/'}>
+            {/* <Link to={'/'}>
                 <h4>back</h4>
-            </Link>
+            </Link> */}
             <div 
                 className='movie-details'
                 style={{
@@ -62,8 +63,20 @@ function MovieDetails() {
                             </ul>
                         </div>
                         <div className='score-line'>
-                            <div className='score-details'>
-                                {Math.round((movie.vote_average) * 10)}%
+                            <div 
+                                className='score-details'
+                                style={{
+                                    borderColor:
+                                        movie.vote_count === 0 ?
+                                        'black' : 
+                                        movie.vote_average > 7.5 ? 
+                                        'green' : 
+                                        movie.vote_average > 5 ?
+                                        'orange' :
+                                        'red'
+                                }}
+                            >
+                                {movie.vote_count > 0 && Math.round(movie.vote_average * 10)}
                             </div>
                             <h2>User Score</h2>
                         </div>
@@ -83,7 +96,10 @@ function MovieDetails() {
                     </div>
                 </div>
             </div>
-            <Cast key={cast.id} cast={cast}/>
+            <div className='movie-bottom-info'>
+                <Cast key={cast.id} cast={cast}/>
+                <MovieInfo movie={movie}/>
+            </div>
         </>
         
     )
