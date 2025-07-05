@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import Cast from './Cast'
 import tmdb from '../api/tmdb'
+import poster_photo from './poster_photo.png'
 
 function MovieDetails() {
     const { id } = useParams()
@@ -44,7 +45,10 @@ function MovieDetails() {
                 <div className='movie-content'>
                     <img
                         className="poster-image"
-                        src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
+                        src={movie.poster_path
+                            ? `https://image.tmdb.org/t/p/w342${movie.poster_path}`
+                            : poster_photo
+                        }
                         alt={movie.original_title}
                     />
                     <div className='movie-text'>
@@ -59,7 +63,7 @@ function MovieDetails() {
                         </div>
                         <div className='score-line'>
                             <div className='score-details'>
-                                {Math.round(movie.vote_average) * 10}%
+                                {Math.round((movie.vote_average) * 10)}%
                             </div>
                             <h2>User Score</h2>
                         </div>

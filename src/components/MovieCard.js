@@ -2,7 +2,15 @@ import { Link } from 'react-router-dom'
 
 function MovieCard(props) {
 
-    console.log(props.movie)
+    const monthList = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+    const day = props.movie.release_date.slice(8)
+    const month = props.movie.release_date.slice(5,7)
+    const year = props.movie.release_date.slice(0,4)
+
+
+    console.log(year)
+
 
     return (
         <div className='movie-card'>
@@ -17,8 +25,10 @@ function MovieCard(props) {
                     </div>
                 </div>
             </Link>
-            <h4>{props.movie.original_title}</h4>
-            <p>{props.movie.release_date}</p>
+            <div className='movie-card-text'>
+                <h4>{props.movie.original_title}</h4>
+                <p>{monthList[parseInt(month) - 1]} {day}, {year}</p>
+            </div>
         </div>
     )
 }

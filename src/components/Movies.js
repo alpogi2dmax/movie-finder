@@ -2,8 +2,6 @@ import MovieCard from "./MovieCard"
 
 function Movies(props) {
 
-    console.log(props.movies)
-
     return (
         <div className='movie-container'>
             <h2>{props.title}</h2>

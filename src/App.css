@@ -15,6 +15,37 @@ header img {
   height: 100%
 }
 
+.search {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.search-input-container {
+  position: relative;
+  width: 400px;
+}
+
+.search-input-container > input {
+  width: 100%;
+  border-radius: 25px;
+  padding: 10px 10px 10px 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  color: #555;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.search-button {
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+}
+
 .movie-container h2 {
   margin-left: 10px;
 }
@@ -47,6 +78,12 @@ header img {
   width: 100%;
   object-fit: cover;
   display: block;
+  margin-bottom: 20px;
+}
+
+.movie-card-text * {
+  padding: 0;
+  margin: 0
 }
 
 .movie-card h4 {
@@ -209,6 +246,7 @@ header img {
   text-align: center;
   /* padding: 0.5rem; */
   overflow: hidden; /* ✅ This clips image corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .actor-card * {
@@ -218,4 +256,37 @@ header img {
 
 .actor-card .actor-image {
   width: 100%;
+}
+
+.actor-card .actor-text {
+  text-align: left;
+  margin-bottom: 10px
+}
+
+.search-card {
+  display: flex;
+  height: 200px;
+  /* padding: 5px; */
+  gap: 5px;
+  border-radius: 5px;
+  margin: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.search-image {
+  height: 100%
+}
+
+.search-card.search-text-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-text-container p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;       /* Limit to 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

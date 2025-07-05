@@ -5,6 +5,8 @@ import Movies from './components/Movies';
 import './App.css';
 import Header from './components/Header';
 import MovieDetails from './components/MovieDetails';
+import Search from './components/Search';
+import SearchResults from './components/SearchResults'
 import tmdb from './api/tmdb';
 
 function App() {
@@ -41,6 +43,7 @@ function App() {
           path='/'
           element={
             <>
+              <Search />
               <Movies movies={popMovies} title='Popular'/>
               <Movies movies={npMovies} title='Now Playing'/>
               <Movies movies={tpMovies} title='Top Rated'/>
@@ -49,6 +52,15 @@ function App() {
           }
         />
         <Route path='movie/:id' element={<MovieDetails />} />
+        <Route 
+          path='search/:query' 
+          element={
+            <>
+              <Search />
+              <SearchResults />
+            </>
+          } 
+        />
       </Routes>
     </Router>
   );

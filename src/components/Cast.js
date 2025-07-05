@@ -1,3 +1,5 @@
+import profile_photo from './profile_photo.png'
+
 function Cast(props) {
 
     const topBilledCast = props.cast.slice(0,10)
@@ -8,10 +10,16 @@ function Cast(props) {
         <div className='actor-card'>
             <img
                 className="actor-image"
-                src={`https://image.tmdb.org/t/p/w300${actor.profile_path}`}
+                src={actor.profile_path 
+                    ? `https://image.tmdb.org/t/p/w300${actor.profile_path}` 
+                    : profile_photo
+                }
                 alt={actor.name}
             />
-            <h4>{actor.name}</h4>
+            <div className='actor-text'>
+                <h4>{actor.name}</h4>
+                <p>{actor.character}</p>
+            </div>
         </div>
 
     ))
