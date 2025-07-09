@@ -1,4 +1,4 @@
-import React, { useState, useContext } from React
+import React, { useState, useContext } from 'react'
 import auth_backend from "../api/auth_backend"
 import { AuthContext } from "../context/AuthContext"
 import { Link } from 'react-router-dom'
@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom'
 function Signup() {
 
     const { setAuth } = useContext(AuthContext)
+
+    const [error, setError] = useState(null)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
