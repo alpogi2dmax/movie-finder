@@ -1,6 +1,7 @@
 import React, { useState, useContext } from React
 import auth_backend from "../api/auth_backend"
 import { AuthContext } from "../context/AuthContext"
+import { Link } from 'react-router-dom'
 
 function Signup() {
 
