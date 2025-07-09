@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import auth_backend from '../api/auth_backend'
 import { AuthContext } from '../context/AuthContext'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 // import Signup from './Signup'
 // import { CgPassword } from 'react-icons/cg'
 
@@ -11,6 +11,8 @@ function Login() {
     const [ username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState(null)
+
+    const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -24,6 +26,7 @@ function Login() {
                     password
                 })
                 setAuth({ authenticated: true, username: response.data.username || username })
+                navigate('/')
             } catch (err) {
                 setError(err.response?.data?.message || 'Login failed')
             }

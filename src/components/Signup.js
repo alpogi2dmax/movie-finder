@@ -1,13 +1,15 @@
 import React, { useState, useContext } from 'react'
 import auth_backend from "../api/auth_backend"
 import { AuthContext } from "../context/AuthContext"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Signup() {
 
     const { setAuth } = useContext(AuthContext)
 
     const [error, setError] = useState(null)
+
+    const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -21,14 +23,15 @@ function Signup() {
                 password
             })
             setAuth({ authenticated: true, username: response.data.username || username })
+            navigate('/')
         } catch (err) {
             setError(err.response?.data?.message || 'Signup failed')
         }
     }
 
     return (
-        <form className='signup-form' onSubmit={handleSubmit}>
-            <div className='signup-form-fields'>
+        <form className='login-form' onSubmit={handleSubmit}>
+            <div className='login-form-buttons'>
                 <label>Username</label>
                 <input type='text' name='username' required />
                 <label>Password</label>
