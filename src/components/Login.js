@@ -38,6 +38,8 @@ function Login() {
                 <input type='password' name='password' required />
                 <button type='submit'>Login</button>
                 {error && <p style={{color: 'red'}}>{error}</p>}
+
+                <p>Don't have an account? <Link to="/signup">Sign up here</Link></p>
             </div>
         </form>
     )

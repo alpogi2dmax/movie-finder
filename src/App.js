@@ -42,37 +42,44 @@ function App() {
   function AppContent() {
     const { auth } = useContext(AuthContext)
 
-    if (auth === null || !auth.authenticated) {
-      return (<Login />)
-    }
-
-    // otherwise show your app routes
     return (
       <Routes>
-        <Route 
-          path='/'
-          element={
-            <>
-              <Search />
-              <Movies movies={popMovies} title='Popular'/>
-              <Movies movies={npMovies} title='Now Playing'/>
-              <Movies movies={tpMovies} title='Top Rated'/>
-              <Movies movies={upMovies} title='Upcoming'/>
-            </>
-          }
-        />
-        <Route path='movie/:id' element={<MovieDetails />} />
-        <Route path='actor/:id' element={<Actor />} />
-        <Route path='movie/reviews/:id' element={<ReviewPage />} />
-        <Route 
-          path='search/:query' 
-          element={
-            <>
-              <Search />
-              <SearchResults />
-            </>
-          } 
-        />
+        {/* Public routes */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+
+        {/* Protected routes */}
+        {auth?.authenticated ? (
+          <>
+            <Route 
+              path='/' 
+              element={
+                <>
+                  <Search />
+                  <Movies movies={popMovies} title='Popular' />
+                  <Movies movies={npMovies} title='Now Playing' />
+                  <Movies movies={tpMovies} title='Top Rated' />
+                  <Movies movies={upMovies} title='Upcoming' />
+                </>
+              } 
+            />
+            <Route path='movie/:id' element={<MovieDetails />} />
+            <Route path='actor/:id' element={<Actor />} />
+            <Route path='movie/reviews/:id' element={<ReviewPage />} />
+            <Route 
+              path='search/:query' 
+              element={
+                <>
+                  <Search />
+                  <SearchResults />
+                </>
+              } 
+            />
+          </>
+        ) : (
+          // Redirect to login for any unknown path
+          <Route path="*" element={<Navigate to="/login" replace />} />
+        )}
       </Routes>
     )
   }
