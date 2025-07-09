@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const auth_backend = axios.create({
-    baseURL: 'web-production-ea6e.up.railway.app',
+    baseURL: 'https://web-production-ea6e.up.railway.app',
     withCredentials: true
 })
 
