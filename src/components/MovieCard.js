@@ -9,9 +9,6 @@ function MovieCard(props) {
     const year = props.movie.release_date.slice(0,4)
 
 
-    console.log(year)
-
-
     return (
         <div className='movie-card'>
             <Link to={`/movie/${props.movie.id}`}>

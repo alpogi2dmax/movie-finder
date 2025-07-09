@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import Movies from './components/Movies';
 import './App.css';
 import Header from './components/Header';
@@ -8,6 +8,9 @@ import MovieDetails from './components/MovieDetails';
 import Search from './components/Search';
 import SearchResults from './components/SearchResults'
 import Actor from './components/Actor';
+import ReviewPage from './components/ReviewPage';
+import { AuthProvider, AuthContext } from './context/AuthContext';
+import Login from './components/Login';
 import tmdb from './api/tmdb';
 
 function App() {
@@ -36,9 +39,15 @@ function App() {
     fetchMovies()
   }, [])
 
-  return (
-    <Router>
-      <Header />
+  function AppContent() {
+    const { auth } = useContext(AuthContext)
+
+    if (auth === null || !auth.authenticated) {
+      return (<Login />)
+    }
+
+    // otherwise show your app routes
+    return (
       <Routes>
         <Route 
           path='/'
@@ -54,6 +63,7 @@ function App() {
         />
         <Route path='movie/:id' element={<MovieDetails />} />
         <Route path='actor/:id' element={<Actor />} />
+        <Route path='movie/reviews/:id' element={<ReviewPage />} />
         <Route 
           path='search/:query' 
           element={
@@ -64,7 +74,16 @@ function App() {
           } 
         />
       </Routes>
-    </Router>
+    )
+  }
+
+  return (
+    <AuthProvider>
+      <Router>
+        <Header />
+        <AppContent />
+      </Router>
+    </AuthProvider>
   );
 }
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import Cast from './Cast'
+import Reviews from './Reviews'
 import MovieInfo from './MovieInfo'
 import tmdb from '../api/tmdb'
 import poster_photo from './poster_photo.png'
@@ -10,6 +11,7 @@ function MovieDetails() {
     const [movie, setMovie] = useState(null)
     const [cast, setCast] = useState([])
     const [crew, setCrew] = useState([])
+    const [reviews, setReviews] = useState([])
 
 
     useEffect(() => {
@@ -17,9 +19,12 @@ function MovieDetails() {
             try {
                 const response = await tmdb.get(`/movie/${id}`)
                 const castResponse = await tmdb.get(`/movie/${id}/credits`)
+                const reviewResponse = await tmdb.get(`/movie/${id}/reviews`)
                 setMovie(response.data)
                 setCast(castResponse.data.cast)
                 setCrew(castResponse.data.crew)
+                setReviews(reviewResponse.data.results)
+
             } catch (err) {
                 console.error('Failed to fetch movie details:', err)
             }
@@ -97,7 +102,11 @@ function MovieDetails() {
                 </div>
             </div>
             <div className='movie-bottom-info'>
-                <Cast key={cast.id} cast={cast}/>
+                <div className='movie-bottom-right-info'>
+                    <Cast key={cast.id} cast={cast}/>
+                    <hr></hr>
+                    {reviews.length > 0 && <Reviews reviews={reviews} movieId={movie.id}/>}
+                </div>
                 <MovieInfo movie={movie}/>
             </div>
         </>
