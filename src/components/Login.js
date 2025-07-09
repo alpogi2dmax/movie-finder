@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react'
 import auth_backend from '../api/auth_backend'
 import { AuthContext } from '../context/AuthContext'
-import { CgPassword } from 'react-icons/cg'
+// import Signup from './Signup'
+// import { CgPassword } from 'react-icons/cg'
 
 function Login() {
 

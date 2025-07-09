@@ -11,6 +11,7 @@ import Actor from './components/Actor';
 import ReviewPage from './components/ReviewPage';
 import { AuthProvider, AuthContext } from './context/AuthContext';
 import Login from './components/Login';
+import Signup from './components/Signup';
 import tmdb from './api/tmdb';
 
 function App() {
